@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cliente</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+    <h1>Editar Cliente</h1>
+    <form action="/cliente/editar/<%= cliente.id %>" method="POST">
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" name="cedula" value="<%= cliente.cedula %>" required>
+
+        <label for="nombres">Nombres:</label>
+        <input type="text" id="nombres" name="nombres" value="<%= cliente.nombres %>" required>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" value="<%= cliente.apellidos %>" required>
+
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" name="direccion" value="<%= cliente.direccion %>" required>
+
+        <label for="lat">Latitud:</label>
+        <input type="text" id="lat" name="lat" value="<%= cliente.lat %>" required>
+
+        <label for="long">Longitud:</label>
+        <input type="text" id="long" name="long" value="<%= cliente.lng %>" required>
+
+        <button type="submit">Actualizar</button>
+    </form>
+    <script>
+        function initMap() {
+            const defaultLocation = { lat: 4.6486259, lng: -74.2478967 };
+            const map = new google.maps.Map(document.getElementById("map"), {
+                center: defaultLocation,
+                zoom: 13,
+            });
+
+            let marker;
+
+            map.addListener("click", (event) => {
+                placeMarker(event.latLng);
+            });
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                        };
+                        map.setCenter(pos);
+                        placeMarker(pos);
+                    },
+                    () => {
+                        console.log("Error: La Geolocalización falló.");
+                    }
+                );
+            }
+
+            function placeMarker(location) {
+                if (marker) {
+                    marker.setPosition(location);
+                } else {
+                    marker = new google.maps.Marker({
+                        position: location,
+                        map: map,
+                    });
+                }
+                const lat = location.lat();
+                const lng = location.lng();
+                document.getElementById("lat").value = lat;
+                document.getElementById("long").value = lng;
+
+
+                console.log('Latitud:', lat);
+                console.log('Longitud:', lng);
+            }
+        }
+    </script>
+</body>
+</html>

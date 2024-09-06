@@ -1,0 +1,83 @@
+/* Estilo general para el cuerpo */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white; /* Color de fondo */
+}
+h1{
+    color: #8B865C;
+    text-align: center; /* Centra el texto */
+    margin-bottom: 1rem; /* Espacio debajo del título */
+ 
+}
+/* Estilo para el menú de navegación */
+nav {
+    background-color: #F0BC73; /* Color de fondo del menú */
+    padding: 1rem;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Contenedor general para la tabla */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: white; /* Fondo blanco para el contenedor */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Estilo para el encabezado */
+.container h1 {
+    color: #8B865C; /* Color del título */
+    margin-bottom: 1rem;
+}
+
+/* Estilo para la tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table th, table td {
+    border: 1px solid #8B865C;
+    padding: 0.5rem;
+    text-align: left;
+}
+
+table th {
+    background-color: #F0BC73; /* Color de fondo de las cabeceras */
+    color: white;
+}
+
+/* Estilo para los enlaces de acción */
+.action-link {
+    color: #8B865C; /* Color del texto */
+    text-decoration: none;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.action-link:hover {
+    text-decoration: underline; /* Subrayar en hover */
+}
